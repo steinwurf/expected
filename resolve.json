@@ -1,16 +1,21 @@
 [
   {
-    "name": "waf-tools",
-    "resolver": "git",
-    "method": "semver",
-    "major": 5,
-    "sources": ["github.com/steinwurf/waf-tools.git"]
-  },
-  {
     "name": "expected-source",
     "resolver": "git",
     "method": "checkout",
     "checkout": "v1.1.0",
-    "sources": ["github.com/TartanLlama/expected.git"]
+    "sources": [
+      "github.com/TartanLlama/expected.git"
+    ]
+  },
+  {
+    "name": "toolchains",
+    "internal": true,
+    "resolver": "git",
+    "method": "semver",
+    "major": 1,
+    "sources": [
+      "github.com/steinwurf/cmake-toolchains.git"
+    ]
   }
 ]

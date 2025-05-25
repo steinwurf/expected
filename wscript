@@ -6,26 +6,22 @@ APPNAME = "expected"
 VERSION = "1.0.0"
 
 
-def configure(conf):
-    conf.set_cxx_std(11)
+def options(ctx):
+
+    ctx.load("cmake")
 
 
-def build(bld):
-    # Path to the expected repo
-    expected_path = bld.dependency_node("expected-source")
+def configure(ctx):
 
-    # Create system include for expected
-    expected_include = expected_path.find_dir("include")
+    ctx.load("cmake")
 
-    bld(
-        name="expected",
-        export_includes=expected_include.abspath(),
-    )
+    if ctx.is_toplevel():
+        ctx.cmake_configure()
 
-    if bld.is_toplevel():
-        bld.program(
-            features="cxx test",
-            source=["example/main.cpp"],
-            target="expected_tests",
-            use=["expected"],
-        )
+
+def build(ctx):
+
+    ctx.load("cmake")
+
+    if ctx.is_toplevel():
+        ctx.cmake_build()

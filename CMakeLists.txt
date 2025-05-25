@@ -16,7 +16,6 @@ if(NOT DEFINED STEINWURF_RESOLVE)
   endif()
 
   set(STEINWURF_RESOLVE "${CMAKE_CURRENT_SOURCE_DIR}/resolve_symlinks")
-  set(STEINWURF_TOP_NAME expected)
 endif()
 
 # Define library
@@ -38,6 +37,9 @@ install(
 # Is top level project?
 if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
   # Build executables
-  add_executable(format example/main.cpp)
-  target_link_libraries(format expected)
+  add_executable(example_expected example/main.cpp)
+  target_link_libraries(example_expected expected)
+
+  enable_testing()
+  add_test(example_expected example_expected)
 endif()
